@@ -47,10 +47,6 @@ public class PlayerController : MonoBehaviour
         {
             Vector3 mouseWorldPosition = ToVec3(camera.ScreenToWorldPoint(ToVec3(Mouse.current.position.ReadValue(), 0)), 0);
             targetPosition = (ClampedDistance(mouseWorldPosition, gameObject.transform.position, 5.0f) + this.gameObject.transform.position) / 2f;
-        // } else if (Time.time-lastTrackedTime < 1f && lastTrackedPosition != null)
-        // {
-        //     float time = (Time.time-lastTrackedTime)/2f + 0.5f;
-        //     targetPosition = Vector3.Lerp(lastTrackedPosition, gameObject.transform.position, Mathf.Pow(time, 4f));
         } else
         {
             targetPosition = gameObject.transform.position;
