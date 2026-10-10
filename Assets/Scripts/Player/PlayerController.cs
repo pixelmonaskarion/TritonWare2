@@ -7,8 +7,9 @@ using UnityEngine.UIElements;
 public class PlayerController : MonoBehaviour
 {
     public Camera camera;
-    public Collider2D playerCollider;
-    public Rigidbody2D body;
+    GameObject player;
+    Collider2D playerCollider;
+    Rigidbody2D body;
     bool trackingMouse = false;
     Vector3 lastTrackedPosition;
     float lastTrackedTime = 0;
@@ -17,6 +18,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         Debug.Log("W player controller");
+        player = gameObject;
+        playerCollider = GetComponent<Collider2D>();
+        body = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -59,7 +63,11 @@ public class PlayerController : MonoBehaviour
     void OnMouseDown()
     {
         trackingMouse = true;
-        Debug.Log("onMouseDown");
+    }
+    
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        Debug.Log(collider.gameObject.tag);
     }
 
     void OnMouseUp()
@@ -73,8 +81,6 @@ public class PlayerController : MonoBehaviour
             body.AddForce(delta*50.0f);
         }
         trackingMouse = false;
-        Debug.Log("onMouseUp");
-
     }
 
     Vector3 ClampedDistance(Vector3 position, Vector3 from, float distance)
