@@ -2,45 +2,33 @@ using UnityEngine;
 
 public class BasicTargetDetection : MonoBehaviour
 {
+    public bool AwareOfPlayer { get; private set; }
 
-    public GameObject target;
-    public float rotationSpeed;
-    public float detectionRange;
+    public Vector2 DirectionToPlayer { get; private set; }
 
+    [SerializeField]
+    private float _playerAwarenessDistance;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private Transform _player;
+
+    private void Awake()
     {
-        transform.rotation = GetTargetRotation();
+        _player = FindAnyObjectByType<PlayerController>().transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Quaternion targetRotation = GetTargetRotation();
-        transform.rotation = Quaternion.RotateTowards
-        (
-            transform.rotation,
-            targetRotation,
-            rotationSpeed * Time.deltaTime
-        );
+        Vector2 enemyToPlayerVector = _player.position - transform.position;
+        DirectionToPlayer = enemyToPlayerVector.normalized;
 
-    }
-
-    Quaternion GetTargetRotation()
-    {
-        if (target == null)
+        if (enemyToPlayerVector.magnitude <= _playerAwarenessDistance)
         {
-            return Quaternion.identity;
+            AwareOfPlayer = true;
         }
-
-        Vector3 direction = target.transform.position - transform.position;
-        if (direction.sqrMagnitude == 0f)
+        else
         {
-            return Quaternion.identity;
+            AwareOfPlayer = false;
         }
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        Quaternion targetRotation = Quaternion.Euler(0f, 0f, angle);
-        return targetRotation;
     }
 }
