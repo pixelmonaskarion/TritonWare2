@@ -11,12 +11,13 @@ public class BulletBehavior : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.linearVelocity = transform.forward * bulletSpeed;
+        rb.linearVelocity = transform.up * bulletSpeed;
     }
 
     // FixedUpdate is called once per fixed frame rate
     void FixedUpdate()
     {
-         Destroy(gameObject, travelTime);
+        Debug.Log("RB Linear Velocity: " + rb.linearVelocity + " Transform: " + transform.up);
+        Destroy(gameObject, travelTime);
     }
 }
