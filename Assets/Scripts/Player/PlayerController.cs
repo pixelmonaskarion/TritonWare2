@@ -7,13 +7,14 @@ using UnityEngine.UIElements;
 public class PlayerController : MonoBehaviour
 {
     public Camera camera;
+    public HeartController heartController;
     GameObject player;
     Collider2D playerCollider;
     Rigidbody2D body;
     bool trackingMouse = false;
     Vector3 lastTrackedPosition;
     float lastTrackedTime = 0;
-
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -67,7 +68,15 @@ public class PlayerController : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log(collider.gameObject.tag);
+        Vector3 relativeVelocity = collider.gameObject.GetComponent<Rigidbody2D>().linearVelocity-body.linearVelocity;
+        if (relativeVelocity == new Vector3(0f, 0f, 0f))
+        {
+            relativeVelocity = collider.gameObject.transform.position-gameObject.transform.position;
+        }
+        body.linearVelocity = Vector3.zero;
+        body.AddForce(relativeVelocity.normalized*400.0f);
+        heartController.currentHealth -= 1;
+        heartController.UpdateHeartSprites();
     }
 
     void OnMouseUp()
