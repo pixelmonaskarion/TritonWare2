@@ -9,16 +9,33 @@ public class BasicTargetDetection : MonoBehaviour
     [SerializeField]
     private float _playerAwarenessDistance;
 
+    [SerializeField]
     private Transform _player;
 
     private void Awake()
     {
-        _player = FindAnyObjectByType<PlayerController>().transform;
+        if (_player == null)
+        {
+            PlayerController playerController = FindAnyObjectByType<PlayerController>();
+            if (playerController == null)
+            {
+                enabled = false;
+                return;
+            }
+
+            _player = playerController.transform;
+        }
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        if (_player == null)
+        {
+            enabled = false;
+            return;
+        }
+
         Vector2 enemyToPlayerVector = _player.position - transform.position;
         DirectionToPlayer = enemyToPlayerVector.normalized;
 
