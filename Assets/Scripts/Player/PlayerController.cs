@@ -14,7 +14,8 @@ public class PlayerController : MonoBehaviour
     bool trackingMouse = false;
     Vector3 lastTrackedPosition;
     float lastTrackedTime = 0;
-    
+    public float baseMoveSpeed = 5f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,7 +28,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var speed = Time.deltaTime*3.0f;
+        var speed = Time.deltaTime * baseMoveSpeed;
         var movement = new Vector3();
         if (Keyboard.current.aKey.isPressed)
         {
