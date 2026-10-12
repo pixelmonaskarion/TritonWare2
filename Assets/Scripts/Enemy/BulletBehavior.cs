@@ -4,6 +4,7 @@ public class BulletBehavior : MonoBehaviour
 {
     public float travelTime = 1f;
     public float bulletSpeed = 10f;
+    public ApplyDamage dealDamage;
 
     private Rigidbody2D rb;
 
@@ -19,5 +20,10 @@ public class BulletBehavior : MonoBehaviour
     {
         Debug.Log("RB Linear Velocity: " + rb.linearVelocity + " Transform: " + transform.up);
         Destroy(gameObject, travelTime);
+    }
+
+    void playerHit()
+    {
+        
     }
 }

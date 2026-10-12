@@ -6,6 +6,7 @@ public class ShootBullet : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform spawnPoint;
     public float fireRate = 5f;
+    public int bulletDamage = 10;
     private float _nextFireTime;
 
     public BasicTargetDetection targetCheck;
