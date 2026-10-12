@@ -9,4 +9,18 @@ public class PlayerHealthSystem : MonoBehaviour
     {
         currentHealth = maxHealth;
     }
+
+    void FixedUpdate()
+    {
+        if (currentHealth <= 0)
+        {
+            GameOver();
+        }
+    }
+
+    void GameOver()
+    {
+        Debug.Log("Player died");
+        gameObject.SetActive(false);
+    }
 }

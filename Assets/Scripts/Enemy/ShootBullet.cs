@@ -36,7 +36,9 @@ public class ShootBullet : MonoBehaviour
 
     void EnemyShoot()
     {
-        Instantiate(bulletPrefab, spawnPoint.position, spawnPoint.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, spawnPoint.position, spawnPoint.rotation);
+        BulletBehavior bulletBehavior = bullet.GetComponent<BulletBehavior>();
+        bulletBehavior.Initialize(bulletDamage);
         _nextFireTime = Time.time + 1f / fireRate;
     }
 }

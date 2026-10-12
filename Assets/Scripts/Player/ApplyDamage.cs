@@ -14,5 +14,11 @@ public class ApplyDamage : MonoBehaviour
         
     }
 
-    
+    public void dealDamage(int damage)
+    {
+        playerHealth.currentHealth -= damage;
+        Debug.Log("Player Health -" + damage + " = " + playerHealth.currentHealth);
+    }
+
+
 }
