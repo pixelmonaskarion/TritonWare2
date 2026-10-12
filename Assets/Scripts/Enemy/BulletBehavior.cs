@@ -17,7 +17,7 @@ public class BulletBehavior : MonoBehaviour
     // FixedUpdate is called once per fixed frame rate
     void FixedUpdate()
     {
-        Debug.Log("RB Linear Velocity: " + rb.linearVelocity + " Transform: " + transform.up);
+        // Debug.Log("RB Linear Velocity: " + rb.linearVelocity + " Transform: " + transform.up);
         Destroy(gameObject, travelTime);
     }
 }

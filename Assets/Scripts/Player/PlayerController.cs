@@ -69,6 +69,7 @@ public class PlayerController : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D collider)
     {
+        Debug.Log(collider.tag);
         Vector3 relativeVelocity = collider.gameObject.GetComponent<Rigidbody2D>().linearVelocity-body.linearVelocity;
         if (relativeVelocity == new Vector3(0f, 0f, 0f))
         {
@@ -78,6 +79,11 @@ public class PlayerController : MonoBehaviour
         body.AddForce(relativeVelocity.normalized*400.0f);
         heartController.currentHealth -= 1;
         heartController.UpdateHeartSprites();
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log(collision.collider.tag);
     }
 
     void OnMouseUp()
