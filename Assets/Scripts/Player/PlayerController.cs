@@ -7,8 +7,10 @@ using UnityEngine.UIElements;
 public class PlayerController : MonoBehaviour
 {
     public Camera camera;
-    public Collider2D playerCollider;
-    public Rigidbody2D body;
+    public HeartController heartController;
+    GameObject player;
+    Collider2D playerCollider;
+    Rigidbody2D body;
     bool trackingMouse = false;
     Vector3 lastTrackedPosition;
     float lastTrackedTime = 0;
@@ -18,6 +20,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         Debug.Log("W player controller");
+        player = gameObject;
+        playerCollider = GetComponent<Collider2D>();
+        body = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -60,7 +65,19 @@ public class PlayerController : MonoBehaviour
     void OnMouseDown()
     {
         trackingMouse = true;
-        Debug.Log("onMouseDown");
+    }
+    
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        Vector3 relativeVelocity = collider.gameObject.GetComponent<Rigidbody2D>().linearVelocity-body.linearVelocity;
+        if (relativeVelocity == new Vector3(0f, 0f, 0f))
+        {
+            relativeVelocity = collider.gameObject.transform.position-gameObject.transform.position;
+        }
+        body.linearVelocity = Vector3.zero;
+        body.AddForce(relativeVelocity.normalized*400.0f);
+        heartController.currentHealth -= 1;
+        heartController.UpdateHeartSprites();
     }
 
     void OnMouseUp()
@@ -74,8 +91,6 @@ public class PlayerController : MonoBehaviour
             body.AddForce(delta*50.0f);
         }
         trackingMouse = false;
-        Debug.Log("onMouseUp");
-
     }
 
     Vector3 ClampedDistance(Vector3 position, Vector3 from, float distance)
