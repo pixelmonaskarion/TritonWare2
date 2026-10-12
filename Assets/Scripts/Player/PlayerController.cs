@@ -49,9 +49,9 @@ public class PlayerController : MonoBehaviour
         this.gameObject.transform.position += movement;
         
         Vector3 targetPosition;
+        Vector3 mouseWorldPosition = ToVec3(camera.ScreenToWorldPoint(ToVec3(Mouse.current.position.ReadValue(), 0)), 0);
         if (trackingMouse)
         {
-            Vector3 mouseWorldPosition = ToVec3(camera.ScreenToWorldPoint(ToVec3(Mouse.current.position.ReadValue(), 0)), 0);
             targetPosition = (ClampedDistance(mouseWorldPosition, gameObject.transform.position, 5.0f) + this.gameObject.transform.position) / 2f;
         } else
         {
@@ -60,6 +60,7 @@ public class PlayerController : MonoBehaviour
         Vector3 targetZ = ToVec3(targetPosition, camera.transform.position.z);
         Vector3 cameraDelta = targetZ-camera.transform.position;
         camera.transform.position += cameraDelta*0.01f;
+        player.transform.rotation = Quaternion.LookRotation(transform.forward, mouseWorldPosition-player.transform.position);
     }
 
     void OnMouseDown()
@@ -69,6 +70,7 @@ public class PlayerController : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D collider)
     {
+        Debug.Log(collider.tag);
         Vector3 relativeVelocity = collider.gameObject.GetComponent<Rigidbody2D>().linearVelocity-body.linearVelocity;
         if (relativeVelocity == new Vector3(0f, 0f, 0f))
         {
@@ -78,6 +80,10 @@ public class PlayerController : MonoBehaviour
         body.AddForce(relativeVelocity.normalized*400.0f);
         heartController.currentHealth -= 1;
         heartController.UpdateHeartSprites();
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
     }
 
     void OnMouseUp()
