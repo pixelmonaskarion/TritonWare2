@@ -41,7 +41,6 @@ public class ContactBehavior : MonoBehaviour
         if(self.IsTouching(target))
         {
             Explode(50, 10);
-            Destroy(gameObject);
         }
     }
 
@@ -60,6 +59,7 @@ public class ContactBehavior : MonoBehaviour
         if ((target.transform.position - self.transform.position).sqrMagnitude <= areaOfEffect * areaOfEffect)
         {
             Debug.Log("Enemy exploded!");
+            Destroy(gameObject);
         }
     }
 }
