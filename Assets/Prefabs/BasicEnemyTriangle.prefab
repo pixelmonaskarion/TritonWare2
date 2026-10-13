@@ -40,12 +40,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2121607361217359514}
-  - component: {fileID: 3152692637720721810}
-  - component: {fileID: 218338619407785237}
-  - component: {fileID: 7280459782898339587}
   - component: {fileID: 7429801179289483597}
   - component: {fileID: 7343222638300844540}
   - component: {fileID: 7350546832412338042}
+  - component: {fileID: 3152692637720721810}
+  - component: {fileID: 218338619407785237}
+  - component: {fileID: 7280459782898339587}
+  - component: {fileID: 5741278405756567508}
   m_Layer: 0
   m_Name: BasicEnemyTriangle
   m_TagString: Enemy
@@ -69,51 +70,6 @@ Transform:
   - {fileID: 355907744794751846}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3152692637720721810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2240900644543797808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdd6f59f61315e34fa79d90347ec6110, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BasicTargetDetection
-  _playerAwarenessDistance: 100
-  _player: {fileID: 0}
---- !u!114 &218338619407785237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2240900644543797808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20d62c6c4361a9a42a61d56bf77f6670, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  bulletPrefab: {fileID: 807728908327051869, guid: b58486dd805ac63458609699ada0976c, type: 3}
-  spawnPoint: {fileID: 355907744794751846}
-  fireRate: 2
-  targetCheck: {fileID: 3152692637720721810}
---- !u!114 &7280459782898339587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2240900644543797808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6a9248958abf744db49d198c72c7c94, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BasicEnemyMovementController
-  _speed: 0
-  _rotationSpeed: 100
-  _rigidbody: {fileID: 7343222638300844540}
 --- !u!212 &7429801179289483597
 SpriteRenderer:
   serializedVersion: 3
@@ -247,3 +203,61 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &3152692637720721810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2240900644543797808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdd6f59f61315e34fa79d90347ec6110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BasicTargetDetection
+  _playerAwarenessDistance: 100
+  _player: {fileID: 0}
+--- !u!114 &218338619407785237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2240900644543797808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20d62c6c4361a9a42a61d56bf77f6670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  bulletPrefab: {fileID: 807728908327051869, guid: b58486dd805ac63458609699ada0976c, type: 3}
+  spawnPoint: {fileID: 355907744794751846}
+  fireRate: 2
+  bulletDamage: 10
+  targetCheck: {fileID: 3152692637720721810}
+--- !u!114 &7280459782898339587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2240900644543797808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6a9248958abf744db49d198c72c7c94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BasicEnemyMovementController
+  _speed: 0
+  _rotationSpeed: 100
+  _rigidbody: {fileID: 7343222638300844540}
+--- !u!114 &5741278405756567508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2240900644543797808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee821dc9a7d79cd4a88ddfc14951261f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
