@@ -1,4 +1,3 @@
-using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,9 +5,11 @@ public class HeartController : MonoBehaviour
 {
     public Image[] hearts;
     public PlayerHealthSystem playerHealth;
+    private int currentHealth;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        int currentHealth = playerHealth.currentHealth;
         UpdateHeartSprites();
     }
 

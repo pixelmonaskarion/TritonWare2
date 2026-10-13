@@ -8,11 +8,15 @@ public class ContactBehavior : MonoBehaviour
     public float damageMod = 1f;
     public Collider2D target;
     private Collider2D self;
+    private Rigidbody2D rb;
+    private ApplyDamage applyDamage;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         self = GetComponent<Collider2D>();
+        rb = GetComponent<Rigidbody2D>();
+        applyDamage = FindAnyObjectByType<PlayerController>().GetComponent<ApplyDamage>();
     }
 
     // Update is called once per frame
@@ -38,9 +42,9 @@ public class ContactBehavior : MonoBehaviour
 
     void Bomber()
     {
-        if(self.IsTouching(target))
+        if((target.transform.position - self.transform.position).sqrMagnitude <= 2f * 2f)
         {
-            Explode(50, 10);
+            Explode(50f, 10);
         }
     }
 
@@ -54,11 +58,13 @@ public class ContactBehavior : MonoBehaviour
         Debug.Log("Apply melee damage");
     }
 
-    void Explode(int areaOfEffect, int damage)
+    void Explode(float areaOfEffect, int damage)
     {
         if ((target.transform.position - self.transform.position).sqrMagnitude <= areaOfEffect * areaOfEffect)
         {
             Debug.Log("Enemy exploded!");
+            applyDamage.dealDamage(damage);
+            applyDamage.applyForce(rb.linearVelocity);
             Destroy(gameObject);
         }
     }
