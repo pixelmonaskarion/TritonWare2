@@ -23,7 +23,7 @@ public class HeartController : MonoBehaviour
     {
         for (int i = 0; i < hearts.Length; i++)
         {
-            hearts[i].enabled = i < currentHealth;
+            hearts[i].enabled = i < playerHealth.currentHealth;
         }
     }
 }
