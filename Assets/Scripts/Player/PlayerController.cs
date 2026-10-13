@@ -70,16 +70,17 @@ public class PlayerController : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log(collider.tag);
-        Vector3 relativeVelocity = collider.gameObject.GetComponent<Rigidbody2D>().linearVelocity-body.linearVelocity;
-        if (relativeVelocity == new Vector3(0f, 0f, 0f))
-        {
-            relativeVelocity = collider.gameObject.transform.position-gameObject.transform.position;
+        if (collider.CompareTag("Enemy")) {
+            Vector3 relativeVelocity = collider.gameObject.GetComponent<Rigidbody2D>().linearVelocity-body.linearVelocity;
+            if (relativeVelocity == new Vector3(0f, 0f, 0f))
+            {
+                relativeVelocity = collider.gameObject.transform.position-gameObject.transform.position;
+            }
+            body.linearVelocity = Vector3.zero;
+            body.AddForce(relativeVelocity.normalized*400.0f);
+            heartController.currentHealth -= 1;
+            heartController.UpdateHeartSprites();
         }
-        body.linearVelocity = Vector3.zero;
-        body.AddForce(relativeVelocity.normalized*400.0f);
-        heartController.currentHealth -= 1;
-        heartController.UpdateHeartSprites();
     }
 
     void OnCollisionEnter2D(Collision2D collision)
