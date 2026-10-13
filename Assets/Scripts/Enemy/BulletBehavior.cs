@@ -8,6 +8,7 @@ public class BulletBehavior : MonoBehaviour
     private ApplyDamage applyDamage;
     private Rigidbody2D rb;
     private int _damage;
+    private Collider2D playerCollider;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,6 +18,7 @@ public class BulletBehavior : MonoBehaviour
         {
             applyDamage = player.GetComponent<ApplyDamage>();
             playerController = player.GetComponent<PlayerController>();
+            playerCollider = playerController.GetComponent<Collider2D>();
         }
 
         rb = GetComponent<Rigidbody2D>();
@@ -36,7 +38,6 @@ public class BulletBehavior : MonoBehaviour
     {
         if (applyDamage != null && playerController != null && rb != null)
         {
-            Collider2D playerCollider = playerController.GetComponent<Collider2D>();
             if (playerCollider != null && rb.IsTouching(playerCollider))
             {
                 PlayerHit();
@@ -52,6 +53,13 @@ public class BulletBehavior : MonoBehaviour
     private void PlayerHit()
     {
         applyDamage.dealDamage(_damage);
+        applyForce(rb.linearVelocity);
         Destroy(gameObject);
+    }
+
+    void applyForce(Vector2 force)
+    {
+        playerCollider.attachedRigidbody.AddForce(force, ForceMode2D.Impulse);
+        Debug.Log("Applied: " + force);
     }
 }
