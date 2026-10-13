@@ -16,7 +16,7 @@ public class ContactBehavior : MonoBehaviour
     {
         self = GetComponent<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
-        applyDamage = GetComponent<PlayerController>().GetComponent<ApplyDamage>();
+        applyDamage = FindAnyObjectByType<PlayerController>().GetComponent<ApplyDamage>();
     }
 
     // Update is called once per frame
@@ -42,7 +42,7 @@ public class ContactBehavior : MonoBehaviour
 
     void Bomber()
     {
-        if((target.transform.position - self.transform.position).sqrMagnitude <= 5f * 5f)
+        if((target.transform.position - self.transform.position).sqrMagnitude <= 2f * 2f)
         {
             Explode(50f, 10);
         }
