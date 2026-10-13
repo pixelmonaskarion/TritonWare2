@@ -53,13 +53,7 @@ public class BulletBehavior : MonoBehaviour
     private void PlayerHit()
     {
         applyDamage.dealDamage(_damage);
-        applyForce(rb.linearVelocity);
+        applyDamage.applyForce(rb.linearVelocity);
         Destroy(gameObject);
-    }
-
-    void applyForce(Vector2 force)
-    {
-        playerCollider.attachedRigidbody.AddForce(force, ForceMode2D.Impulse);
-        Debug.Log("Applied: " + force);
     }
 }
