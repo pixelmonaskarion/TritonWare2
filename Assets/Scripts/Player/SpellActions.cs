@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class SpellActions : MonoBehaviour
 {
     public GameObject fireballPrefab;
+    
     bool counterRunning;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 218338619407785237}
   - component: {fileID: 7280459782898339587}
   - component: {fileID: 5741278405756567508}
+  - component: {fileID: 3623817054212229053}
   m_Layer: 0
   m_Name: BasicEnemyTriangle
   m_TagString: Enemy
@@ -261,3 +262,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee821dc9a7d79cd4a88ddfc14951261f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  maxHealth: 50
+  currentHealth: 0
+--- !u!114 &3623817054212229053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2240900644543797808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d203b0c4f4f8fee46ae2d532d8a11131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ApplyEnemyDamage
+  enemyHealth: {fileID: 5741278405756567508}
+  enemyCollider: {fileID: 7350546832412338042}
