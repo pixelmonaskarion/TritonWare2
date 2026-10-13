@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class HeartController : MonoBehaviour
 {
     public Image[] hearts;
-    public int currentHealth;
+    public PlayerHealthSystem playerHealth;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,7 +22,7 @@ public class HeartController : MonoBehaviour
     {
         for (int i = 0; i < hearts.Length; i++)
         {
-            hearts[i].enabled = i < currentHealth;
+            hearts[i].enabled = i < playerHealth.currentHealth;
         }
     }
 }
