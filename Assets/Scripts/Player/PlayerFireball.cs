@@ -29,7 +29,7 @@ public class PlayerFireball : MonoBehaviour
             if (enemyDamage != null)
             {
                 enemyDamage.dealDamage(damage + GameObject.Find("Player").GetComponent<SpellActions>().dmgMod);
-                enemyDamage.applyForce(rb.linearVelocity);
+                enemyDamage.applyForce(rb.linearVelocity.normalized * 20f);
             }
             Destroy(gameObject);
         }

@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BasicTargetDetection
   _playerAwarenessDistance: 100
-  _player: {fileID: 0}
+  _player: {fileID: 9124103665702528084, guid: c3362cb55d32047619c888310ca5f7cc, type: 3}
 --- !u!114 &218338619407785237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,6 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BasicEnemyMovementController
   _speed: 0
   _rotationSpeed: 100
+  _knockbackDuration: 0.25
   _rigidbody: {fileID: 7343222638300844540}
 --- !u!114 &5741278405756567508
 MonoBehaviour:

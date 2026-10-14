@@ -12,6 +12,10 @@ public class ContactBehavior : MonoBehaviour
     private ApplyDamage applyDamage;
 
     public GameObject BomberExplosionPrefab;
+    public GameObject BleedPrefab;
+    public BasicEnemyMovementController enemyMovement;
+
+    private float timeSinceLastAttack = 0f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,6 +28,11 @@ public class ContactBehavior : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (timeSinceLastAttack <= 30f)
+        {
+            timeSinceLastAttack += Time.fixedDeltaTime;
+        }
+
         if (target != null) {
             switch(enemyContactType)
             {
@@ -52,7 +61,10 @@ public class ContactBehavior : MonoBehaviour
 
     void Blitzer()
     {
-        Debug.Log("Place Holder: Do dash attack");
+        if((target.transform.position - self.transform.position).sqrMagnitude <= 4f * 4f)
+        {
+            MeleeAttack(10, 1f);
+        }
     }
 
     void Basic()
@@ -69,6 +81,32 @@ public class ContactBehavior : MonoBehaviour
             applyDamage.dealDamage(damage);
             applyDamage.applyForce(rb.linearVelocity);
             Destroy(gameObject);
+        }
+    }
+
+    void MeleeAttack(int damage, float cooldown)
+    {
+        if ((target.transform.position - self.transform.position).sqrMagnitude <= 3f * 3f && timeSinceLastAttack >= cooldown)
+        {
+            Debug.Log("Enemy melee attacked!");
+            applyDamage.dealDamage(damage);
+            applyDamage.applyForce(rb.linearVelocity.normalized * 10f);
+            enemyMovement.ApplyKnockback(-rb.linearVelocity.normalized * 20f);
+            ApplyEffect("bleed");
+            timeSinceLastAttack = 0;
+        }
+    }
+
+    void ApplyEffect(string effectName)
+    {
+        switch (effectName)
+        {
+            case "bleed":
+                Instantiate(BleedPrefab, target.transform.position, Quaternion.identity * transform.rotation);
+                break;
+            default:
+                Debug.Log("No effect applied.");
+                break;
         }
     }
 }
