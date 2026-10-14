@@ -30,7 +30,7 @@ public class ShootBullet : MonoBehaviour
         }
         else
         {
-            Debug.Log("Enemy is not aware of player.");
+            //Debug.Log("Enemy is not aware of player.");
         }
     }
 

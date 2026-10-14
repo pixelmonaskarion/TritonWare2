@@ -182,3 +182,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BulletBehavior
   travelTime: 2
   bulletSpeed: 10
+  bulletHitPrefab: {fileID: 6034252537861691228, guid: 23013b8dd689bdd4c989b1215549460e, type: 3}

@@ -19,10 +19,27 @@ public class ApplyEnemyDamage : MonoBehaviour
     {
         enemyHealth.currentHealth -= damage;
         Debug.Log("Enemy Health -" + damage + " = " + enemyHealth.currentHealth);
+        if (enemyHealth.currentHealth <= 0)
+        {
+            Debug.Log("Enemy has been defeated!");
+            Destroy(gameObject, 0.5f);
+        }
     }
     public void applyForce(Vector2 force)
     {
-        enemyCollider.attachedRigidbody.AddForce(force, ForceMode2D.Impulse);
+        Rigidbody2D enemyRigidbody = enemyCollider.attachedRigidbody;
+        BasicEnemyMovementController movementController =
+            enemyRigidbody.GetComponent<BasicEnemyMovementController>();
+
+        if (movementController != null)
+        {
+            movementController.ApplyKnockback(force);
+        }
+        else
+        {
+            enemyRigidbody.AddForce(force, ForceMode2D.Impulse);
+        }
+
         Debug.Log("Applied: " + force);
     }
 

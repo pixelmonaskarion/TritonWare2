@@ -11,6 +11,8 @@ public class ContactBehavior : MonoBehaviour
     private Rigidbody2D rb;
     private ApplyDamage applyDamage;
 
+    public GameObject BomberExplosionPrefab;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -63,6 +65,7 @@ public class ContactBehavior : MonoBehaviour
         if ((target.transform.position - self.transform.position).sqrMagnitude <= areaOfEffect * areaOfEffect)
         {
             Debug.Log("Enemy exploded!");
+            Instantiate(BomberExplosionPrefab, self.transform.position, Quaternion.identity);
             applyDamage.dealDamage(damage);
             applyDamage.applyForce(rb.linearVelocity);
             Destroy(gameObject);

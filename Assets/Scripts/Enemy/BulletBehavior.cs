@@ -9,6 +9,7 @@ public class BulletBehavior : MonoBehaviour
     private Rigidbody2D rb;
     private int _damage;
     private Collider2D playerCollider;
+    public GameObject bulletHitPrefab;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -52,6 +53,10 @@ public class BulletBehavior : MonoBehaviour
 
     private void PlayerHit()
     {
+        if (bulletHitPrefab != null)
+        {
+            Instantiate(bulletHitPrefab, transform.position, Quaternion.identity * transform.rotation);
+        }
         applyDamage.dealDamage(_damage);
         applyDamage.applyForce(rb.linearVelocity);
         Destroy(gameObject);

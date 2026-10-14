@@ -4,6 +4,7 @@ public class PlayerFireball : MonoBehaviour
 {
     public float bulletSpeed;
     public float travelTime;
+    public int damage = 50;
     private Rigidbody2D rb;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -18,5 +19,19 @@ public class PlayerFireball : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            ApplyEnemyDamage enemyDamage = other.GetComponent<ApplyEnemyDamage>();
+            if (enemyDamage != null)
+            {
+                enemyDamage.dealDamage(damage + GameObject.Find("Player").GetComponent<SpellActions>().dmgMod);
+                enemyDamage.applyForce(rb.linearVelocity);
+            }
+            Destroy(gameObject);
+        }
     }
 }
