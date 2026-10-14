@@ -7,8 +7,7 @@ public class SpellActions : MonoBehaviour
 {
     public int dmgMod = 0; // Adds damage
     public GameObject fireballPrefab;
-    
-    
+    public GameObject meleePrefab;
     bool counterRunning;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -24,6 +23,10 @@ public class SpellActions : MonoBehaviour
         {
             FireBallSpell();
         }
+        if (Keyboard.current.gKey.wasPressedThisFrame)
+        {
+            MeleeAttackSpell();
+        }
         if (Keyboard.current.qKey.wasPressedThisFrame && !counterRunning)
         {
             StartCoroutine(PlayerCounter(true));
@@ -37,6 +40,10 @@ public class SpellActions : MonoBehaviour
     void FireBallSpell()
     {
         Instantiate(fireballPrefab, gameObject.transform.position, gameObject.transform.rotation);
+    }
+    void MeleeAttackSpell()
+    {
+        Instantiate(meleePrefab, gameObject.transform.position, gameObject.transform.rotation);
     }
 
     IEnumerator PlayerCounter(bool flipped)
