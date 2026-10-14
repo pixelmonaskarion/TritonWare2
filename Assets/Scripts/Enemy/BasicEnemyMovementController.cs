@@ -8,9 +8,13 @@ public class BasicEnemyMovementController : MonoBehaviour
     [SerializeField]
     private float _rotationSpeed;
 
+    [SerializeField]
+    private float _knockbackDuration = 0.25f;
+
     public Rigidbody2D _rigidbody;
     private BasicTargetDetection _playerAwarenessController;
     private Vector2 _targetDirection;
+    private float _knockbackTimeRemaining;
 
     private void Awake()
     {
@@ -20,9 +24,21 @@ public class BasicEnemyMovementController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (_knockbackTimeRemaining > 0f)
+        {
+            _knockbackTimeRemaining -= Time.fixedDeltaTime;
+            return;
+        }
+
         UpdateTargetDirection();
         RotateTowardsTarget();
         SetVelocity();
+    }
+
+    public void ApplyKnockback(Vector2 force)
+    {
+        _rigidbody.AddForce(force, ForceMode2D.Impulse);
+        _knockbackTimeRemaining = _knockbackDuration;
     }
 
     private void UpdateTargetDirection()

@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class SpellActions : MonoBehaviour
 {
+    public int dmgMod = 0; // Adds damage
     public GameObject fireballPrefab;
     public GameObject meleePrefab;
     bool counterRunning;

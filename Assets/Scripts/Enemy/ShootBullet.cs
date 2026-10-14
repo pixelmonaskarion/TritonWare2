@@ -23,14 +23,14 @@ public class ShootBullet : MonoBehaviour
     {
         if (targetCheck.AwareOfPlayer)
         {
-            if (Time.time >= _nextFireTime)
+            if (Time.time >= _nextFireTime && bulletPrefab != null && spawnPoint != null)
             {
                 EnemyShoot();
             }
         }
         else
         {
-            Debug.Log("Enemy is not aware of player.");
+            //Debug.Log("Enemy is not aware of player.");
         }
     }
 
