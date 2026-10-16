@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdd6f59f61315e34fa79d90347ec6110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BasicTargetDetection
-  _playerAwarenessDistance: 125
+  _playerAwarenessDistance: 15
   _player: {fileID: 0}
 --- !u!114 &8219358978984001682
 MonoBehaviour:
@@ -201,7 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   bulletPrefab: {fileID: 4119051484565947451, guid: 7d643ffbaaacdf04c8cc05cd2150463c, type: 3}
   spawnPoint: {fileID: 3783725684599877933}
-  fireRate: 1
+  fireRate: 0.3
   bulletDamage: 5
   targetCheck: {fileID: 6793861613713481060}
 --- !u!114 &7221710894619307221

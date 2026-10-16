@@ -12,31 +12,32 @@ public class BasicTargetDetection : MonoBehaviour
     [SerializeField]
     private Transform _player;
 
+    private GameObject _playerGameObject;
+
     private void Awake()
     {
-        if (_player == null)
+        if (_playerGameObject == null)
         {
-            PlayerController playerController = FindAnyObjectByType<PlayerController>();
+            _playerGameObject = GameObject.FindWithTag("Player");
+            PlayerController playerController = _playerGameObject.GetComponent<PlayerController>();
             if (playerController == null)
             {
                 enabled = false;
                 return;
             }
-
-            _player = playerController.transform;
         }
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (_player == null)
+        if (_playerGameObject == null)
         {
             enabled = false;
             return;
         }
 
-        Vector2 enemyToPlayerVector = _player.position - transform.position;
+        Vector2 enemyToPlayerVector = _playerGameObject.transform.position - transform.position;
         DirectionToPlayer = enemyToPlayerVector.normalized;
 
         if (enemyToPlayerVector.magnitude <= _playerAwarenessDistance)
