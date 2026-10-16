@@ -18,7 +18,6 @@ public class BasicEnemyMovementController : MonoBehaviour
 
     private void Awake()
     {
-
         _playerAwarenessController = GetComponent<BasicTargetDetection>();
     }
 
@@ -43,13 +42,13 @@ public class BasicEnemyMovementController : MonoBehaviour
 
     private void UpdateTargetDirection()
     {
-        if (_playerAwarenessController.AwareOfPlayer)
+        if (true)//_playerAwarenessController.AwareOfPlayer)
         {
             _targetDirection = _playerAwarenessController.DirectionToPlayer;
         }
         else
         {
-            _targetDirection = Vector2.zero;
+            //_targetDirection = Vector2.zero;
         }
     }
 
