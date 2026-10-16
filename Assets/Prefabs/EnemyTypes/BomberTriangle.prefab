@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 6437298337494180322}
   - component: {fileID: 6539189035628599140}
   - component: {fileID: 8591477838907380945}
+  - component: {fileID: 7041777522086624722}
+  - component: {fileID: 4454415240856875520}
   m_Layer: 0
   m_Name: BomberTriangle
   m_TagString: Enemy
@@ -219,6 +221,34 @@ MonoBehaviour:
   BomberExplosionPrefab: {fileID: 813718543249052325, guid: 4530de02594e5454f8ff796ba070d57f, type: 3}
   BleedPrefab: {fileID: 0}
   enemyMovement: {fileID: 6464034594686943005}
+--- !u!114 &7041777522086624722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2568452485957085742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee821dc9a7d79cd4a88ddfc14951261f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BasicEnemyHealthSystem
+  maxHealth: 50
+  currentHealth: 0
+--- !u!114 &4454415240856875520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2568452485957085742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d203b0c4f4f8fee46ae2d532d8a11131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ApplyEnemyDamage
+  enemyHealth: {fileID: 7041777522086624722}
+  enemyCollider: {fileID: 6539189035628599140}
 --- !u!1 &2976089278898422829
 GameObject:
   m_ObjectHideFlags: 0
