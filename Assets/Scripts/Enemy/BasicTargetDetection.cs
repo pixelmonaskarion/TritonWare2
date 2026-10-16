@@ -19,6 +19,7 @@ public class BasicTargetDetection : MonoBehaviour
         if (_playerGameObject == null)
         {
             _playerGameObject = GameObject.FindWithTag("Player");
+            _player = _playerGameObject.transform;
             PlayerController playerController = _playerGameObject.GetComponent<PlayerController>();
             if (playerController == null)
             {

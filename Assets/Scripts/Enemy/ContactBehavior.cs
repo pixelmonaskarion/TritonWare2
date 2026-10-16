@@ -22,6 +22,7 @@ public class ContactBehavior : MonoBehaviour
     {
         self = GetComponent<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
+        target = GameObject.Find("Player").GetComponent<Collider2D>();
         applyDamage = FindAnyObjectByType<PlayerController>().GetComponent<ApplyDamage>();
     }
 

@@ -17,7 +17,8 @@ public class LevelOneWaveSpawner : MonoBehaviour
         if (Keyboard.current.qKey.wasPressedThisFrame)
         {
             Debug.Log("Spawning wave 1");
-            _spawnWave.StartWave(5, 5, 5, 5, 30f);
+            _spawnWave.distanceFromPlayer = 30;
+            _spawnWave.StartWave(5, 5, 5, 5);
         }
     }
 }

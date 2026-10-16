@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2242893834778013829}
   - component: {fileID: 4656277171773489510}
   - component: {fileID: -1406820398240849227}
+  - component: {fileID: 7395883983359328786}
   m_Layer: 0
   m_Name: PlayerFireball
   m_TagString: Untagged
@@ -173,3 +174,18 @@ MonoBehaviour:
   bulletSpeed: 10
   travelTime: 1
   damage: 50
+--- !u!114 &7395883983359328786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6149751933242667525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df042e9a52c4dd46926f4e7d292d196, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RotateLight
+  lightPrefab: {fileID: 6169958029765463153, guid: 1735a20047f682248a8d15435f1ea306, type: 3}
+  target: {fileID: 6149751933242667525}
+  rotationSpeed: 1
