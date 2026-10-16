@@ -276,6 +276,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1563792967517253029}
+  - component: {fileID: 2435755183516534063}
   m_Layer: 0
   m_Name: Bullet_Spawner
   m_TagString: Untagged
@@ -298,3 +299,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7099561688001114884}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2435755183516534063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6650584095899367174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df042e9a52c4dd46926f4e7d292d196, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RotateLight
+  lightPrefab: {fileID: 6169958029765463153, guid: 1735a20047f682248a8d15435f1ea306, type: 3}
+  target: {fileID: 2681972756680174648}
+  rotationSpeed: 10
