@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BasicEnemyMovementController
   _speed: 8
-  _rotationSpeed: 100
+  _rotationSpeed: 150
   _knockbackDuration: 0.25
   _rigidbody: {fileID: 6437298337494180322}
 --- !u!212 &6604047683425995091

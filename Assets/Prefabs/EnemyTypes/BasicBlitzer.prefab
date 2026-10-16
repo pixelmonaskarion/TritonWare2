@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BasicTargetDetection
   _playerAwarenessDistance: 100
-  _player: {fileID: 0}
+  _player: {fileID: 9124103665702528084, guid: c3362cb55d32047619c888310ca5f7cc, type: 3}
 --- !u!114 &2406222137688828463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,7 +263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ContactBehavior
   enemyContactType: 2
   damageMod: 1
-  target: {fileID: 0}
+  target: {fileID: 884937460463932278, guid: c3362cb55d32047619c888310ca5f7cc, type: 3}
   BomberExplosionPrefab: {fileID: 0}
   BleedPrefab: {fileID: 2231143858272981256, guid: a99de1252e9d3a145b564b73fa05531e, type: 3}
   enemyMovement: {fileID: 3657929713694449731}

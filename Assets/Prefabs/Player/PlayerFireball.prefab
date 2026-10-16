@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -1406820398240849227}
   m_Layer: 0
   m_Name: PlayerFireball
-  m_TagString: PlayerAttack
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -171,5 +171,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerFireball
   bulletSpeed: 10
-  travelTime: 3
+  travelTime: 1
   damage: 50
