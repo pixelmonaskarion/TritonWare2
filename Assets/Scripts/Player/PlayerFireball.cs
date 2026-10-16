@@ -34,4 +34,5 @@ public class PlayerFireball : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 }
