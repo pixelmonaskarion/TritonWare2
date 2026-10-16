@@ -171,5 +171,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerFireball
   bulletSpeed: 10
-  travelTime: 3
+  travelTime: 1
   damage: 50

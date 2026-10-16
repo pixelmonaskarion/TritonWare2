@@ -36,6 +36,7 @@ public class SpellActions : MonoBehaviour
 
     void FireBallSpell()
     {
+        Debug.Log("FIREBALL");
         Instantiate(fireballPrefab, gameObject.transform.position, gameObject.transform.rotation);
     }
 

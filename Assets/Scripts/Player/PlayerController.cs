@@ -7,11 +7,11 @@ using UnityEngine.UIElements;
 public class PlayerController : MonoBehaviour
 {
     public Camera camera;
-    public HeartController heartController;
+    //public HeartController heartController;
     GameObject player;
     Collider2D playerCollider;
     Rigidbody2D body;
-    bool trackingMouse = false;
+    bool trackingMouse = true;
     Vector3 lastTrackedPosition;
     float lastTrackedTime = 0;
     public float baseMoveSpeed = 5f;
