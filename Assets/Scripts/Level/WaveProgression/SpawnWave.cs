@@ -18,8 +18,6 @@ public class SpawnWave : MonoBehaviour
     private int enemyTypeIndex = 0;
     public int distanceFromPlayer = 0;
 
-    private float timer = 0f;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,13 +31,11 @@ public class SpawnWave : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        timer += Time.deltaTime;
     }
 
 
     public void StartWave(int basicEnemies, int eliteEnemies, int companionEnemies, int bossEnemies)
     {
-        StopAllCoroutines();
         int[] enemiesToSpawn = new int[] { basicEnemies, eliteEnemies, companionEnemies, bossEnemies };
         enemyTypeIndex = 0;
         StartCoroutine(SpawnRoutine(enemiesToSpawn));
