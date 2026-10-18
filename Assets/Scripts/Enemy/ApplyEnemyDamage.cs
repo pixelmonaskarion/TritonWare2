@@ -4,6 +4,7 @@ public class ApplyEnemyDamage : MonoBehaviour
 {
     public BasicEnemyHealthSystem enemyHealth;
     public Collider2D enemyCollider;
+    public GameObject deathEffectPrefab;
 
     void Start()
     {
@@ -22,6 +23,10 @@ public class ApplyEnemyDamage : MonoBehaviour
         if (enemyHealth.currentHealth <= 0)
         {
             Debug.Log("Enemy has been defeated!");
+            if (deathEffectPrefab != null)
+            {
+                Instantiate(deathEffectPrefab, transform.position, transform.rotation);
+            }
             Destroy(gameObject, 0.5f);
         }
     }

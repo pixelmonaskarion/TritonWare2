@@ -7,6 +7,7 @@ public class ContactBehavior : MonoBehaviour
     public int enemyContactType = 1;
     public float damageMod = 1f;
     public Collider2D target;
+    private PlayerHealthSystem targetHealth;
     private Collider2D self;
     private Rigidbody2D rb;
     private ApplyDamage applyDamage;
@@ -23,6 +24,7 @@ public class ContactBehavior : MonoBehaviour
         self = GetComponent<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.Find("Player").GetComponent<Collider2D>();
+        targetHealth = target.GetComponent<PlayerHealthSystem>();
         applyDamage = FindAnyObjectByType<PlayerController>().GetComponent<ApplyDamage>();
     }
 
@@ -94,6 +96,10 @@ public class ContactBehavior : MonoBehaviour
             applyDamage.applyForce(rb.linearVelocity.normalized * 10f);
             enemyMovement.ApplyKnockback(-rb.linearVelocity.normalized * 20f);
             ApplyEffect("bleed");
+            if (targetHealth != null)
+            {
+                targetHealth.Bleed(5, 3);
+            }
             timeSinceLastAttack = 0;
         }
     }
