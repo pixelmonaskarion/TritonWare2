@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     GameObject player;
     Collider2D playerCollider;
     Rigidbody2D body;
-    bool trackingMouse = true;
+    bool trackingMouse = false;
     Vector3 lastTrackedPosition;
     float lastTrackedTime = 0;
     public float baseMoveSpeed = 5f;
