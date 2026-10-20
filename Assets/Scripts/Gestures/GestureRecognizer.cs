@@ -139,7 +139,7 @@ public class GestureRecognizer
         {
             GestureSegment segmentHere = inputSegments[i];
             int combinedSegmentsSoFar = i-segmentStart;
-            if ((combinedSegmentsSoFar == 0 || Math.Abs(angle-segmentHere.angle) < 2.0) && i != inputSegments.Count-1)
+            if ((combinedSegmentsSoFar == 0 || Math.Abs(angle-segmentHere.angle) < Mathf.Deg2Rad*15.0) && i != inputSegments.Count-1)
             {
                 angle = segmentHere.angle;
             } else
