@@ -7,7 +7,9 @@ public class GestureCapture : MonoBehaviour
 {
     public float baseSampleRate;
     public Camera camera;
+    public GameObject player;
     public Sprite debugDot;
+    public SpellActions spellActions;
     float lastSampleTime;
     GestureRecognizer gestureRecognizer = new();
     GestureClassifier gestureClassifier = new();
@@ -25,11 +27,10 @@ public class GestureCapture : MonoBehaviour
     {
         if (Time.time-lastSampleTime > baseSampleRate)
         {
-            lastSampleTime += baseSampleRate;
             Vector2 mousePosition = Mouse.current.position.ReadValue();
-            if ((mousePosition-lastMousePosition).magnitude < 0.5)
+            if ((mousePosition-lastMousePosition).magnitude < 1.0)
             {
-                if (gestureHappening)
+                if (gestureHappening && Time.time-lastSampleTime > baseSampleRate*5.0)
                 {
                     foreach (GameObject o in debug)
                     {
@@ -41,10 +42,28 @@ public class GestureCapture : MonoBehaviour
                     });
                     DebugDrawGesture(characterizedGesture);
                     if (characterizedGesture.Count > 1) {
-                        gestureClassifier.ClassifyGesture(characterizedGesture);
+                        ClassifiedGesture shape = gestureClassifier.ClassifyGesture(characterizedGesture, new(player.transform.position, camera));
+                        if (shape != null) {
+                            player.transform.rotation = Quaternion.LookRotation(transform.forward, shape.direction);
+                            if (shape.gestureType == ClassifiedGestureType.Carrot)
+                            {
+                                spellActions.Dash();
+                                
+                            }
+                            if (shape.gestureType == ClassifiedGestureType.Triangle)
+                            {
+                                spellActions.FireBallSpell();
+                            }
+                            if (shape.gestureType == ClassifiedGestureType.Square)
+                            {
+                                spellActions.AOEBlast();
+                            }
+                        }
                     }
                     gestureRecognizer = new();
                     gestureHappening = false;
+                    lastSampleTime = Time.time;
+                    lastMousePosition = mousePosition;
                 } else
                 {
                     // Debug.Log("no movement, no current gesture");
@@ -53,9 +72,11 @@ public class GestureCapture : MonoBehaviour
             {
                 gestureRecognizer.AddSample(mousePosition);
                 gestureHappening = true;
+                lastSampleTime += baseSampleRate;
+                lastMousePosition = mousePosition;
                 // Debug.Log("added sample");
+
             }
-            lastMousePosition = mousePosition;
         }
     }
 
