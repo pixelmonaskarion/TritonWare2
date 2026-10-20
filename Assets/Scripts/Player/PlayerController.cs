@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     Vector3 lastTrackedPosition;
     float lastTrackedTime = 0;
     public float baseMoveSpeed = 5f;
+    public bool isPoisoned = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,6 +30,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         var speed = Time.deltaTime * baseMoveSpeed;
+        if (isPoisoned)
+        {
+            speed *= 0.5f;
+        }
         var movement = new Vector3();
         if (Keyboard.current.aKey.isPressed)
         {

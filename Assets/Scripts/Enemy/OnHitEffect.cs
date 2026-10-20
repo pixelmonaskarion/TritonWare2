@@ -3,6 +3,7 @@ using UnityEngine;
 public class OnHitEffect : MonoBehaviour
 {
     private GameObject target;
+    private PlayerHealthSystem targetHealth;
     public BleedEffect BleedEffect;
     public PoisonEffect PoisonEffect;
     public string effectType = "";
@@ -10,6 +11,7 @@ public class OnHitEffect : MonoBehaviour
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player");
+        targetHealth = target.GetComponent<PlayerHealthSystem>();
     }
 
     // Update is called once per frame
@@ -32,9 +34,11 @@ public class OnHitEffect : MonoBehaviour
         {
             case "bleed":
                 Instantiate(BleedEffect, target.transform.position, Quaternion.identity);
+                targetHealth.Bleed(5, 3);
                 break;
             case "poison":
                 Instantiate(PoisonEffect, target.transform.position, Quaternion.identity);
+                targetHealth.Poison(5, 1);
                 break;
         }
     }
