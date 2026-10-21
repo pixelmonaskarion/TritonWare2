@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 public class PlayerHealthSystem : MonoBehaviour
 {
-    public int currentHealth;
-    public int maxHealth;
     public HealthBarController healthBarController;
+    public float currentHealth;
+    public float maxHealth;
 
     private PlayerController playerController;
 

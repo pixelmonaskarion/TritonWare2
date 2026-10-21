@@ -1,5 +1,6 @@
 using System;
 using Unity.VisualScripting;
+using UnityEditor.Callbacks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -34,24 +35,28 @@ public class PlayerController : MonoBehaviour
         {
             speed *= 0.5f;
         }
-        // var movement = new Vector3();
-        // if (Keyboard.current.aKey.isPressed)
-        // {
-        //     movement += new Vector3(-speed, 0);
-        // }
-        // if (Keyboard.current.dKey.isPressed)
-        // {
-        //     movement += new Vector3(speed, 0);
-        // }
-        // if (Keyboard.current.wKey.isPressed)
-        // {
-        //     movement += new Vector3(0, speed);
-        // }
-        // if (Keyboard.current.sKey.isPressed)
-        // {
-        //     movement += new Vector3(0, -speed);
-        // }
-        // this.gameObject.transform.position += movement;
+        var movement = new Vector3();
+        if (Keyboard.current.aKey.isPressed)
+        {
+            movement += new Vector3(-speed, 0);
+        }
+        if (Keyboard.current.dKey.isPressed)
+        {
+            movement += new Vector3(speed, 0);
+        }
+        if (Keyboard.current.wKey.isPressed)
+        {
+            movement += new Vector3(0, speed);
+        }
+        if (Keyboard.current.sKey.isPressed)
+        {
+            movement += new Vector3(0, -speed);
+        }
+        if (Keyboard.current.rKey.isPressed)
+        {
+            gameObject.GetComponent<Rigidbody2D>().AddForceX(100, ForceMode2D.Force);
+        }
+        this.gameObject.transform.position += movement;
         
         Vector3 targetPosition;
         Vector3 mouseWorldPosition = ToVec3(camera.ScreenToWorldPoint(ToVec3(Mouse.current.position.ReadValue(), 0)), 0);

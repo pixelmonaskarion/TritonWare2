@@ -20,10 +20,10 @@ public class SpellActions : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if (Keyboard.current.fKey.wasPressedThisFrame)
-        // {
-        //     FireBallSpell();
-        // }
+        if (Keyboard.current.fKey.wasPressedThisFrame)
+        {
+            FireBallSpell();
+        }
         // if (Keyboard.current.qKey.wasPressedThisFrame && !counterRunning)
         // {
         //     StartCoroutine(PlayerCounter(true));
