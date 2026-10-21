@@ -5,17 +5,17 @@ public class ApplyEnemyDamage : MonoBehaviour
     public BasicEnemyHealthSystem enemyHealth;
     public Collider2D enemyCollider;
     public GameObject deathEffectPrefab;
+    private ScoreCounter scoreCounter;
 
     void Start()
     {
-        
+        scoreCounter = GameObject.FindGameObjectWithTag("Counter").GetComponent<ScoreCounter>();
     }
 
     void FixedUpdate()
     {
         
     }
-
     public void dealDamage(int damage)
     {
         enemyHealth.currentHealth -= damage;
@@ -27,7 +27,8 @@ public class ApplyEnemyDamage : MonoBehaviour
             {
                 Instantiate(deathEffectPrefab, transform.position, transform.rotation);
             }
-            Destroy(gameObject, 0.5f);
+            scoreCounter.IncreaseScoreByEnemyValue(gameObject.name.Remove(gameObject.name.IndexOf('(')));
+            Destroy(gameObject);
         }
     }
     public void applyForce(Vector2 force)

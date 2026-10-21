@@ -18,7 +18,7 @@ public class ApplyDamage : MonoBehaviour
         
     }
 
-    public void dealDamage(int damage)
+    public void dealDamage(float damage)
     {
         if (invulnerable) return;
         playerHealth.currentHealth -= damage;
