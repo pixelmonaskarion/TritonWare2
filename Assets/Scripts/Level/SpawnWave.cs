@@ -10,7 +10,7 @@ public class SpawnWave : MonoBehaviour
 
     public GameObject basicEnemyPrefab;
     public GameObject eliteEnemyPrefab;
-    public GameObject companionEnemyPrefab;
+    public GameObject challenge1EnemyPrefab, challenge2EnemyPrefab;
     public GameObject bossEnemyPrefab;
 
 
@@ -24,7 +24,7 @@ public class SpawnWave : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         enemyPrefabs.Add(0, basicEnemyPrefab);
         enemyPrefabs.Add(1, eliteEnemyPrefab);
-        enemyPrefabs.Add(2, companionEnemyPrefab);
+        enemyPrefabs.Add(2, challenge1EnemyPrefab);
         enemyPrefabs.Add(3, bossEnemyPrefab);
     }
 
@@ -34,9 +34,9 @@ public class SpawnWave : MonoBehaviour
     }
 
 
-    public void StartWave(int basicEnemies, int eliteEnemies, int companionEnemies, int bossEnemies)
+    public void StartWave(int basicEnemies, int eliteEnemies, int challengeEnemies, int bossEnemies)
     {
-        int[] enemiesToSpawn = new int[] { basicEnemies, eliteEnemies, companionEnemies, bossEnemies };
+        int[] enemiesToSpawn = new int[] { basicEnemies, eliteEnemies, challengeEnemies, bossEnemies };
         enemyTypeIndex = 0;
         StartCoroutine(SpawnRoutine(enemiesToSpawn));
     }

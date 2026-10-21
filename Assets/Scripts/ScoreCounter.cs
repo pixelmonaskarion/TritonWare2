@@ -13,7 +13,7 @@ public class ScoreCounter : MonoBehaviour
     void Start()
     {
         enemyValues.Add("BasicEnemyTriangle", 100);
-        enemyValues.Add("BasicBlizter", 150);
+        enemyValues.Add("BasicBlitzer", 150);
         enemyValues.Add("BomberTriangle", 100);
         enemyValues.Add("PoisonDartTriangle", 200);
         enemyValues.Add("BasicSniper", 300);

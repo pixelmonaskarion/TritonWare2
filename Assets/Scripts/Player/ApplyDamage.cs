@@ -44,4 +44,5 @@ public class ApplyDamage : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    
 }

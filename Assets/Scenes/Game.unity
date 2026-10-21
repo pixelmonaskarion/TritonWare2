@@ -657,10 +657,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 832904264}
-  - component: {fileID: 832904263}
   - component: {fileID: 832904262}
+  - component: {fileID: 832904265}
   m_Layer: 0
-  m_Name: LevelOneWaveSpawner
+  m_Name: Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -682,21 +682,10 @@ MonoBehaviour:
   spawnEffectPrefab: {fileID: 2350930171133340813, guid: fd9b646c1e3466f41a7278042582ab09, type: 3}
   basicEnemyPrefab: {fileID: 2240900644543797808, guid: 56d80e27a3f12ad4fab9803c7fbd22b1, type: 3}
   eliteEnemyPrefab: {fileID: 2681972756680174648, guid: fad19033fbc1fde41baa681702e46bd3, type: 3}
-  companionEnemyPrefab: {fileID: 2568452485957085742, guid: 81575ef98686a4647ae26974aa99e7cd, type: 3}
+  challenge1EnemyPrefab: {fileID: 2568452485957085742, guid: 81575ef98686a4647ae26974aa99e7cd, type: 3}
+  challenge2EnemyPrefab: {fileID: 3418267250891398185, guid: 08239bb02106eee4eac9405befe11407, type: 3}
   bossEnemyPrefab: {fileID: 651844812725869049, guid: 46bc3c8c83b7ad149b37b7beff7ee6d6, type: 3}
   distanceFromPlayer: 50
---- !u!114 &832904263
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 832904261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f965e86c91cb8c84d9714bc1717bb4e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LevelOneWaveSpawner
 --- !u!4 &832904264
 Transform:
   m_ObjectHideFlags: 0
@@ -712,6 +701,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &832904265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832904261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f965e86c91cb8c84d9714bc1717bb4e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PartyMode
 --- !u!1 &870978914
 GameObject:
   m_ObjectHideFlags: 0
