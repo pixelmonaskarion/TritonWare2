@@ -1,0 +1,122 @@
+using System;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
+
+public class PlayerController : MonoBehaviour
+{
+    public Camera camera;
+    //public HeartController heartController;
+    GameObject player;
+    Collider2D playerCollider;
+    Rigidbody2D body;
+    bool trackingMouse = false;
+    Vector3 lastTrackedPosition;
+    float lastTrackedTime = 0;
+    public float baseMoveSpeed = 5f;
+    public bool isPoisoned = false;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        Debug.Log("W player controller");
+        player = gameObject;
+        playerCollider = GetComponent<Collider2D>();
+        body = GetComponent<Rigidbody2D>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        var speed = Time.deltaTime * baseMoveSpeed;
+        if (isPoisoned)
+        {
+            speed *= 0.5f;
+        }
+        // var movement = new Vector3();
+        // if (Keyboard.current.aKey.isPressed)
+        // {
+        //     movement += new Vector3(-speed, 0);
+        // }
+        // if (Keyboard.current.dKey.isPressed)
+        // {
+        //     movement += new Vector3(speed, 0);
+        // }
+        // if (Keyboard.current.wKey.isPressed)
+        // {
+        //     movement += new Vector3(0, speed);
+        // }
+        // if (Keyboard.current.sKey.isPressed)
+        // {
+        //     movement += new Vector3(0, -speed);
+        // }
+        // this.gameObject.transform.position += movement;
+        
+        Vector3 targetPosition;
+        Vector3 mouseWorldPosition = ToVec3(camera.ScreenToWorldPoint(ToVec3(Mouse.current.position.ReadValue(), 0)), 0);
+        if (trackingMouse)
+        {
+            targetPosition = (ClampedDistance(mouseWorldPosition, gameObject.transform.position, 5.0f) + this.gameObject.transform.position) / 2f;
+        } else
+        {
+            targetPosition = gameObject.transform.position;
+        }
+        Vector3 targetZ = ToVec3(targetPosition, camera.transform.position.z);
+        Vector3 cameraDelta = targetZ-camera.transform.position;
+        camera.transform.position += cameraDelta*0.01f;
+        player.transform.rotation = Quaternion.LookRotation(transform.forward, mouseWorldPosition-player.transform.position);
+    }
+
+    void OnMouseDown()
+    {
+        // trackingMouse = true;
+    }
+    
+    // void OnTriggerEnter2D(Collider2D collider)
+    // {
+    //     if (collider.CompareTag("Enemy")) {
+    //         Vector3 relativeVelocity = collider.gameObject.GetComponent<Rigidbody2D>().linearVelocity-body.linearVelocity;
+    //         if (relativeVelocity == new Vector3(0f, 0f, 0f))
+    //         {
+    //             relativeVelocity = collider.gameObject.transform.position-gameObject.transform.position;
+    //         }
+    //         body.linearVelocity = Vector3.zero;
+    //         body.AddForce(relativeVelocity.normalized*400.0f);
+    //         heartController.currentHealth -= 1;
+    //         heartController.UpdateHeartSprites();
+    //     }
+    // }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+    }
+
+    void OnMouseUp()
+    {
+        if (trackingMouse)
+        {
+            Vector3 mouseWorldPosition = ToVec3(camera.ScreenToWorldPoint(ToVec3(Mouse.current.position.ReadValue(), 0)), 0);
+            lastTrackedPosition = mouseWorldPosition;
+            lastTrackedTime = Time.time;
+            Vector3 delta = mouseWorldPosition-gameObject.transform.position;
+            body.AddForce(delta*50.0f);
+        }
+        trackingMouse = false;
+    }
+
+    Vector3 ClampedDistance(Vector3 position, Vector3 from, float distance)
+    {
+        Vector3 delta = position-from;
+        if (delta.magnitude == 0)
+        {
+            return position;
+        }
+        return from + delta.normalized * Math.Min(delta.magnitude, distance);
+    }
+
+    Vector3 ToVec3(Vector2 xy, float z)
+    {
+        return new Vector3(xy.x, xy.y, z);
+    }
+}

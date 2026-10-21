@@ -1,16 +1,18 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class FollowMouse : MonoBehaviour
 {
+    public Camera camera;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Debug.Log("W player controller");
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        transform.position = camera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
     }
 }
