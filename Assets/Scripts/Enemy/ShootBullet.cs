@@ -10,11 +10,14 @@ public class ShootBullet : MonoBehaviour
     private float _nextFireTime;
 
     public BasicTargetDetection targetCheck;
+    private AudioSource audio;
+    public AudioClip shootSound;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         targetCheck = GetComponent<BasicTargetDetection>();
+        audio = GetComponent<AudioSource>();
         _nextFireTime = Time.time;
     }
 
@@ -36,6 +39,8 @@ public class ShootBullet : MonoBehaviour
 
     void EnemyShoot()
     {
+        audio.clip = shootSound;
+        audio.Play();
         GameObject bullet = Instantiate(bulletPrefab, spawnPoint.position, spawnPoint.rotation);
         BulletBehavior bulletBehavior = bullet.GetComponent<BulletBehavior>();
         bulletBehavior.Initialize(bulletDamage);

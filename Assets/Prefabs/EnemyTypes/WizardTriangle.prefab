@@ -208,6 +208,7 @@ MonoBehaviour:
   fireRate: 1
   bulletDamage: 30
   targetCheck: {fileID: 292462677120548717}
+  shootSound: {fileID: 8300000, guid: 31b30766265242a4da02b428d59c570f, type: 3}
 --- !u!114 &2316518559942099237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,6 +254,8 @@ MonoBehaviour:
   enemyHealth: {fileID: 1185117389759678744}
   enemyCollider: {fileID: 2008833155416551128}
   deathEffectPrefab: {fileID: 8161588115203030657, guid: 666e1e4f7a80cfd4ebfb96eed0bd8fea, type: 3}
+  hitSound: {fileID: 8300000, guid: 7bbd9f52b5887754f80a7c33410e66cf, type: 3}
+  destroyed: {fileID: 8300000, guid: 9982f4e47a100eb4397f7fdaf6e909f8, type: 3}
 --- !u!114 &7730447698477108737
 MonoBehaviour:
   m_ObjectHideFlags: 0

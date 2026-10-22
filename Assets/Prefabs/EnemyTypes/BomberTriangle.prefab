@@ -252,6 +252,8 @@ MonoBehaviour:
   enemyHealth: {fileID: 7041777522086624722}
   enemyCollider: {fileID: 6539189035628599140}
   deathEffectPrefab: {fileID: 813718543249052325, guid: 4530de02594e5454f8ff796ba070d57f, type: 3}
+  hitSound: {fileID: 8300000, guid: 7bbd9f52b5887754f80a7c33410e66cf, type: 3}
+  destroyed: {fileID: 8300000, guid: 9982f4e47a100eb4397f7fdaf6e909f8, type: 3}
 --- !u!114 &8283547950448165349
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -7,6 +7,9 @@ public class SpellActions : MonoBehaviour
 {
     public int dmgMod = 0; // Adds damage
     public GameObject fireballPrefab;
+    private AudioSource audio;
+
+    public AudioClip launchFireBall, dashSound, AOESound;
     
     
     public bool dashRunning = false;
@@ -14,7 +17,7 @@ public class SpellActions : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -37,6 +40,8 @@ public class SpellActions : MonoBehaviour
     public void FireBallSpell()
     {
         Debug.Log("FIREBALL");
+        audio.clip = launchFireBall;
+        audio.Play();
         Instantiate(fireballPrefab, gameObject.transform.position, gameObject.transform.rotation);
     }
 
@@ -53,6 +58,8 @@ public class SpellActions : MonoBehaviour
 
     IEnumerator PlayerDash()
     {
+        audio.clip = dashSound;
+        audio.Play();
         dashRunning = true;
         gameObject.GetComponent<ApplyDamage>().invulnerable = true;
         gameObject.GetComponent<Rigidbody2D>().AddForce(gameObject.transform.up*1600.0f);
@@ -64,6 +71,8 @@ public class SpellActions : MonoBehaviour
 
     public void AOEBlast()
     {
+        audio.clip = AOESound;
+        audio.Play();
         foreach (GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy"))
         {
             ApplyEnemyDamage enemyDamage;

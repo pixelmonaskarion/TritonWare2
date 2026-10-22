@@ -7,9 +7,13 @@ public class ApplyEnemyDamage : MonoBehaviour
     public GameObject deathEffectPrefab;
     private ScoreCounter scoreCounter;
 
+    public AudioClip hitSound, destroyed;
+    private AudioSource audio;
+
     void Start()
     {
         scoreCounter = GameObject.FindGameObjectWithTag("Counter").GetComponent<ScoreCounter>();
+        audio = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
@@ -18,6 +22,8 @@ public class ApplyEnemyDamage : MonoBehaviour
     }
     public void dealDamage(int damage)
     {
+        audio.clip = hitSound;
+        audio.Play();
         enemyHealth.currentHealth -= damage;
         Debug.Log("Enemy Health -" + damage + " = " + enemyHealth.currentHealth);
         if (enemyHealth.currentHealth <= 0)
@@ -28,6 +34,8 @@ public class ApplyEnemyDamage : MonoBehaviour
                 Instantiate(deathEffectPrefab, transform.position, transform.rotation);
             }
             scoreCounter.IncreaseScoreByEnemyValue(gameObject.name.Remove(gameObject.name.IndexOf('(')));
+            audio.clip = destroyed;
+            audio.Play();
             Destroy(gameObject);
         }
     }

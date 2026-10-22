@@ -8,9 +8,12 @@ public class ApplyDamage : MonoBehaviour
     public bool invulnerable = false;
     public int dashDamage = 1;
 
+    public AudioClip takeDMG;
+    private AudioSource audio;
+
     void Start()
     {
-        
+        audio = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
@@ -20,6 +23,8 @@ public class ApplyDamage : MonoBehaviour
 
     public void dealDamage(float damage)
     {
+        audio.clip = takeDMG;
+        audio.Play();
         if (invulnerable) return;
         playerHealth.currentHealth -= damage;
         Debug.Log("Player Health -" + damage + " = " + playerHealth.currentHealth);
