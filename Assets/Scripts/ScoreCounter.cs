@@ -4,7 +4,7 @@ using System;
 
 public class ScoreCounter : MonoBehaviour
 {
-    private float score = 0f;
+    public float score = 0f;
     public bool survivedBossWave = false;
 
     private Dictionary<string, int> enemyValues = new Dictionary<string, int>();

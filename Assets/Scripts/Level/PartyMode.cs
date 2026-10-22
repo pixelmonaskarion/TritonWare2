@@ -8,7 +8,7 @@ public class PartyMode : MonoBehaviour
 {
     private SpawnWave _spawnWave;
     private int basic, elite, challenge, boss = 0;
-    private int wave = 0;
+    public int wave = 0;
     private int variety = 0;
     private ScoreCounter scoreCounter;
 
@@ -40,7 +40,11 @@ public class PartyMode : MonoBehaviour
                 wave++; variety++;
                 Debug.Log("Spawning Wave: " + wave);
                 
-                basic = wave + Random.Range(-1 * variety, variety); elite = (wave / 2) + Random.Range(-1 * variety / 2, variety / 2); challenge = (wave / 3) + Random.Range(-1 * variety / 3, variety / 3);
+                wave += 3;
+                basic = wave + Random.Range(-1 * variety, variety); 
+                elite = (wave / 2) + Random.Range(-1 * variety / 2, variety / 2); 
+                challenge = (wave / 3) + Random.Range(-1 * variety / 3, variety / 3);
+                wave -= 3;
                 if (wave % 6 == 0) { boss = 1; }
 
                 _spawnWave.StartWave(basic, elite, challenge, boss);

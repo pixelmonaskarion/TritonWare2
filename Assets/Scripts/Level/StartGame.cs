@@ -15,6 +15,7 @@ public class StartGame : MonoBehaviour
     void Start()
     {
         button = GetComponent<Button>();
+        button.enabled = true;
         button.onClick.AddListener(onClick);
     }
 
