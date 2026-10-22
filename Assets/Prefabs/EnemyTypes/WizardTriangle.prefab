@@ -92,8 +92,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0.67295593, g: 0.30567434, b: 0.10369433, a: 1}
+  m_Sprite: {fileID: 7251081079880874063, guid: 462464b7962914654884d550f3b1461f, type: 3}
+  m_Color: {r: 0.8018868, g: 0.3075212, b: 0.03404235, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -167,8 +167,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0.21133333}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.28866667}
-    oldSize: {x: 1, y: 1}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.02, y: 0.882}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -285,7 +285,8 @@ MonoBehaviour:
   spawnEffectPrefab: {fileID: 2350930171133340813, guid: fd9b646c1e3466f41a7278042582ab09, type: 3}
   basicEnemyPrefab: {fileID: 2240900644543797808, guid: 56d80e27a3f12ad4fab9803c7fbd22b1, type: 3}
   eliteEnemyPrefab: {fileID: 2681972756680174648, guid: fad19033fbc1fde41baa681702e46bd3, type: 3}
-  companionEnemyPrefab: {fileID: 3418267250891398185, guid: 08239bb02106eee4eac9405befe11407, type: 3}
+  challenge1EnemyPrefab: {fileID: 0}
+  challenge2EnemyPrefab: {fileID: 0}
   bossEnemyPrefab: {fileID: 2568452485957085742, guid: 81575ef98686a4647ae26974aa99e7cd, type: 3}
   distanceFromPlayer: 0
 --- !u!1 &1440911811331356432
