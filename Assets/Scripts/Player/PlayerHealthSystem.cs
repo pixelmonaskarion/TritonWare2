@@ -1,11 +1,15 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealthSystem : MonoBehaviour
 {
     public HealthBarController healthBarController;
+    public SpriteRenderer playerRenderer;
     public float currentHealth;
     public float maxHealth;
+    public GameObject gameOverObject;
+    public ScoreCounter scoreCounter;
 
     private PlayerController playerController;
 
@@ -29,6 +33,8 @@ public class PlayerHealthSystem : MonoBehaviour
     {
         Debug.Log("Player died");
         gameObject.SetActive(false);
+        gameOverObject.SetActive(true);
+        gameOverObject.GetComponent<EndGameController>().score = (int)scoreCounter.score;
     }
 
     public void Bleed(int duration, int damagePerSecond)

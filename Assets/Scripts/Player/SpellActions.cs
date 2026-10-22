@@ -58,7 +58,6 @@ public class SpellActions : MonoBehaviour
         gameObject.GetComponent<Rigidbody2D>().AddForce(gameObject.transform.up*1600.0f);
         yield return new WaitForSeconds(0.4f);
         gameObject.GetComponent<ApplyDamage>().invulnerable = false;
-        gameObject.tag = "Player";
         dashRunning = false;
     }
 

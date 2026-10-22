@@ -58,7 +58,7 @@ public class ContactBehavior : MonoBehaviour
     {
         if((target.transform.position - self.transform.position).sqrMagnitude <= 2f * 2f)
         {
-            Explode(50f, 10);
+            Explode(50f, 50);
         }
     }
 

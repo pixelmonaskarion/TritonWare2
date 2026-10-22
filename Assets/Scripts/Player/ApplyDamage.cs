@@ -41,7 +41,6 @@ public class ApplyDamage : MonoBehaviour
                 enemyDamage.dealDamage(dashDamage + GameObject.Find("Player").GetComponent<SpellActions>().dmgMod);
                 enemyDamage.applyForce(playerRb.linearVelocity.normalized * 20f);
             }
-            Destroy(gameObject);
         }
     }
     
