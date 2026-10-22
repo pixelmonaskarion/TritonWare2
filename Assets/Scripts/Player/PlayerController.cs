@@ -58,6 +58,12 @@ public class PlayerController : MonoBehaviour
         }
         this.gameObject.transform.position += movement;
         
+        Vector3 mouseWorldPosition = ToVec3(camera.ScreenToWorldPoint(ToVec3(Mouse.current.position.ReadValue(), 0)), 0);
+        player.transform.rotation = Quaternion.LookRotation(transform.forward, mouseWorldPosition-player.transform.position);
+    }
+
+    void LateUpdate()
+    {
         Vector3 targetPosition;
         Vector3 mouseWorldPosition = ToVec3(camera.ScreenToWorldPoint(ToVec3(Mouse.current.position.ReadValue(), 0)), 0);
         if (trackingMouse)
@@ -70,7 +76,6 @@ public class PlayerController : MonoBehaviour
         Vector3 targetZ = ToVec3(targetPosition, camera.transform.position.z);
         Vector3 cameraDelta = targetZ-camera.transform.position;
         camera.transform.position += cameraDelta*0.01f;
-        player.transform.rotation = Quaternion.LookRotation(transform.forward, mouseWorldPosition-player.transform.position);
     }
 
     void OnMouseDown()

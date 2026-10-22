@@ -6,11 +6,12 @@ using UnityEngine.InputSystem;
 
 public class GestureCapture : MonoBehaviour
 {
-    public float baseSampleRate;
+    public float baseSampleRate = 1f/30f;
     public Camera camera;
     public GameObject player;
     public Sprite debugDot;
     public SpellActions spellActions;
+    public GestureParticles gestureParticles;
     float lastSampleTime;
     GestureRecognizer gestureRecognizer = new();
     GestureClassifier gestureClassifier = new();
@@ -41,10 +42,11 @@ public class GestureCapture : MonoBehaviour
                     List<GestureSegment> characterizedGesture = gestureRecognizer.CharacterizeSamples(p => {
                         AddDot(p);
                     });
-                    DebugDrawGesture(characterizedGesture);
+                    // DebugDrawGesture(characterizedGesture);
                     if (characterizedGesture.Count > 1) {
                         ClassifiedGesture shape = gestureClassifier.ClassifyGesture(characterizedGesture, new(player.transform.position, camera));
                         if (shape != null) {
+                            gestureParticles.AddParticles(characterizedGesture);
                             player.transform.rotation = Quaternion.LookRotation(transform.forward, shape.direction);
                             if (shape.gestureType == ClassifiedGestureType.Carrot)
                             {

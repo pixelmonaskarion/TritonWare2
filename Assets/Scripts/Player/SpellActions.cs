@@ -73,7 +73,7 @@ public class SpellActions : MonoBehaviour
                 if (delta.magnitude < 15f) {
                     enemyDamage.dealDamage(25);
                 }
-                enemyDamage.applyForce(delta.normalized * 1500f/delta.magnitude);
+                enemyDamage.applyForce(delta.normalized * 1000f/delta.magnitude);
             }
         }
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class PlayerHealthSystem : MonoBehaviour
 {
+    public HealthBarController healthBarController;
     public float currentHealth;
     public float maxHealth;
 
@@ -12,6 +13,7 @@ public class PlayerHealthSystem : MonoBehaviour
     {
         currentHealth = maxHealth;
         playerController = GetComponent<PlayerController>();
+        healthBarController.SetMaxHealth(maxHealth);
     }
 
     void FixedUpdate()
@@ -20,6 +22,7 @@ public class PlayerHealthSystem : MonoBehaviour
         {
             GameOver();
         }
+        healthBarController.SetHealth(currentHealth);
     }
 
     void GameOver()
